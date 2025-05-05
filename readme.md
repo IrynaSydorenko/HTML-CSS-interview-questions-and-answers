@@ -1,7 +1,8 @@
 <details>
-<summary>### What is the purpose of semantic HTML? When and where is it important?</summary>
+<summary>What is the purpose of semantic HTML? When and where is it important? </summary>
 
-Semantic HTML provides meaning to the web page structure by using tags that reflect the purpose of the content inside them (e.g., `<article>`, `<section>`, `<header>`, etc.).
+Semantic HTML provides meaning to the web page structure by using tags that reflect the purpose of the content inside them 
+(`<article>`, `<section>`, `<header>`, etc.).
 
 **Why it’s important:**
 
@@ -16,10 +17,10 @@ Always prefer semantic tags when the content has a clear role or meaning. For ex
 - Use `<nav>` for site navigation.
 - Use `<article>` for blog posts or news entries.
 - Use `<footer>` for contact info and legal disclaimers.
-<details>
+</details>
 
 <details>
-<summary>### How can you style checkboxes in HTML/CSS?</summary>
+<summary>How can you style checkboxes in HTML/CSS? </summary>
 
 ```html
 <label class="custom-checkbox">
@@ -76,12 +77,10 @@ background color when checked */
   border-color: #666;
 }
 ```
-
 </details>
 
 <details>
-
-<summary>### What can a form consist of? What are the main attributes of a form and its elements, and what do they do? How to validate a form?</summary>
+<summary>What can a form consist of? What are the main attributes of a form and its elements, and what do they do? How to validate a form?</summary>
 
 A form typically consists of the following elements:
 
@@ -109,12 +108,13 @@ A form typically consists of the following elements:
 - **Client-side validation**: Done using HTML attributes (like `required`, `minlength`, `pattern`) or JavaScript to check input before submission.
 - **Server-side validation**: Done on the server after form submission to ensure data integrity and security.
 - **HTML5 validation**: Modern HTML provides built-in validation (e.g., for email, URL, or number inputs), but can be enhanced with JavaScript for custom checks.
+</details>
 
 <details>
   <summary>
-    ###What is the difference between PNG and JPG? What are the advantages of SVG?
+    What is the difference between PNG and JPG? What are the advantages of SVG?
   </summary>
-  ## PNG vs JPG:
+   PNG vs JPG:
 
 ### PNG (Portable Network Graphics):
 
