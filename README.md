@@ -118,14 +118,21 @@ Using `<label>` elements correctly is important for both accessibility and user 
 
 ### Main attributes of form elements:
 
-- **`name`**: Specifies the name of the form element, which is sent with the form data.
-- **`value`**: Specifies the initial value of an input element.
-- **`placeholder`**: Provides a short hint inside an input field about what value is expected.
-- **`required`**: Indicates that a field must be filled out before submitting the form.
-- **`disabled`**: Prevents interaction with a form element.
-- **`readonly`**: Makes a form element non-editable, but still selectable.
-- **`min`, `max`**: Sets limits for numeric or date inputs.
-- **`pattern`**: Specifies a regular expression for validating input values.
+### For `<form>`:
+- `action` – URL where the form data is sent after submission.
+- `method` – HTTP method used (`GET` or `POST`).
+- `target` – where to open the response (e.g., `_self`, `_blank`).
+- `novalidate` – disables browser's built-in validation.
+
+### For form elements:
+- `name` – key used to identify the input’s data when the form is submitted.
+- `value` – the current value of the input.
+- `type` – defines the kind of input (`text`, `email`, `password`, `checkbox`, etc.).
+- `required` – input must be filled out before submitting.
+- `min`, `max`, `minlength`, `maxlength` – limit input range or length.
+- `pattern` – regex to define custom input format.
+- `placeholder` – text shown inside the input before user types.
+- `readonly`, `disabled` – restrict editing or interaction.
 
 ### Form validation:
 
