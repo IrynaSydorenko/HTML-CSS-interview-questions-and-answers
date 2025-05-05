@@ -92,6 +92,30 @@ A form typically consists of the following elements:
 - `<button>`: Used to submit the form or trigger actions.
 - `<fieldset>`: Groups related form elements together, often with a `<legend>` element for a title.
 
+## Why bind a `<label>` to an `<input>`?
+
+Using `<label>` elements correctly is important for both accessibility and user experience. Here's why:
+
+1. **Accessibility for screen readers**  
+   When a label is properly associated with an input (via the `for` attribute or by wrapping the input), screen readers announce the label text when the input is focused.  
+   ➤ Without this, users with visual impairments won’t know what the input is for.
+
+2. **Clickable area**  
+   Binding a label to an input makes the label clickable, which means clicking the label will focus or toggle the input (e.g., toggles a checkbox or focuses a text field).  
+   ➤ This improves UX, especially for small elements like checkboxes and radio buttons.
+
+3. **Better semantic structure**  
+   Associating labels with inputs improves the semantic correctness of your form.  
+   ➤ It helps browsers and assistive technologies interpret and handle the form more effectively.
+
+---
+
+### Use cases:
+
+- ✅ Use `<label>` for single input descriptions.
+- ✅ Use `<fieldset>` + `<legend>` to group and describe sets of related inputs.
+
+
 ### Main attributes of form elements:
 
 - **`name`**: Specifies the name of the form element, which is sent with the form data.
