@@ -241,3 +241,5 @@ Example:
 ```
 
 4. Use Flexbox or CSS Grid instead These layout models are modern, more powerful, and do not suffer from this whitespace issue.
+
+</details>
