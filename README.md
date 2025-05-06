@@ -572,3 +572,45 @@ Instead of using <br> to add space between lines, CSS (e.g., margin or padding) 
 The `<br>` tag should be used for cases where a simple line break is needed, but it should not be used for structuring the page or formatting large text blocks. It is a small tool for specific scenarios.
 
 </details> 
+
+<details>
+<summary>11. What is the difference between <code>&lt;div&gt;</code> and <code>&lt;span&gt;</code>?</summary>
+
+The key difference between `<div>` and `<span>` tags lies in how they affect the page structure and the type of content they are meant to group.
+
+---
+
+### `<div>` — Block-level Element
+
+- Occupies the full width of its container.
+- Always starts on a new line.
+- Used to group larger blocks of content or elements (usually block-level elements).
+- Can contain both block-level and inline elements.
+
+**Example:**
+
+```html
+<div>
+  <h1>Title</h1>
+  <p>This is a paragraph inside a div.</p>
+</div>
+```
+
+**`<span>` — Inline Element**
+
+Does not start on a new line.
+Wraps only the portion of content it surrounds.
+Used to group small parts of text or inline elements for styling or scripting.
+Can only contain other inline elements.
+
+```html
+<p>This is a <span style="color: red;">highlighted</span> word in a paragraph.</p>
+```
+
+### When to Use
+
+Use <div> to structure or organize large content sections (e.g., containers, layout blocks).
+Use <span> for styling or handling small inline content (e.g., changing the color of a single word).
+Both tags are commonly used with CSS and JavaScript to control the appearance and behavior of content.
+
+</details> 
