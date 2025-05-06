@@ -169,3 +169,75 @@ Using `<label>` elements correctly is important for both accessibility and user 
 - **Interactive**: SVG can be manipulated using CSS and JavaScript, allowing for animations and interactivity in web pages.
 - **Accessibility**: Since SVGs are text-based, they can be indexed by search engines and are often more accessible than other formats.
 </details>
+
+<details>
+<summary>How are flex items positioned inside a flex container? How to change the axis direction?</summary>
+
+When an element has `display: flex`, its direct children become **flex items**. By default:
+
+- The **main axis** is horizontal (left to right).
+- Items are placed in a row from left to right (`flex-direction: row` by default).
+- They follow the flow of the main axis and wrap only if `flex-wrap` is enabled.
+
+Positioning is controlled by:
+- `justify-content`: aligns items along the **main axis** (horizontal by default).
+- `align-items`: aligns items along the **cross axis** (vertical by default).
+
+
+Use the `flex-direction` property:
+- `row` (default): left to right
+- `row-reverse`: right to left
+- `column`: top to bottom
+- `column-reverse`: bottom to top
+
+Example:
+```css
+.container {
+  display: flex;
+  flex-direction: column;
+}
+</details>
+
+<details>
+<summary>❓ What issues can occur when using inline-blocks for layout, and how can we fix them? Where does the extra space between them come from?</summary>
+
+✅ **Answer:**
+
+### Issues with `inline-block` layout
+
+When you use `display: inline-block` to place elements side by side, a **horizontal space (gap)** often appears between them — similar to the space between words in a sentence.
+
+---
+
+### 🔍 Why does the gap appear?
+
+The gap is caused by **whitespace characters** (spaces, tabs, newlines) in the HTML between the elements. Inline-block elements are treated like inline text, so this whitespace is rendered as a visible gap.
+
+Example:
+```html
+<div class="box"></div> <div class="box"></div>
+
+✅ **Solutions to remove the gap:**
+
+1. Remove whitespace in HTML
+
+```html
+<div class="box"></div><div class="box"></div>
+```
+
+2. Use HTML comments to hide the whitespace
+
+```html
+<div class="box"></div><!--
+--><div class="box"></div>
+```
+
+3. Set `font-size: 0` on the container
+
+```css
+.container {
+  font-size: 0;
+}
+```
+
+4. Use Flexbox or CSS Grid instead These layout models are modern, more powerful, and do not suffer from this whitespace issue.
