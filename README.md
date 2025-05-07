@@ -1,11 +1,13 @@
+# HTML/CSS Interview Questions and Answers
+
+This document contains a collection of frontend interview questions with detailed answers, formatted with expandable sections for easy reference.
+
 <details>
 <summary>1. What is the purpose of semantic HTML? When and where is it important? </summary>
-
 Semantic HTML provides meaning to the web page structure by using tags that reflect the purpose of the content inside them 
 (`<article>`, `<section>`, `<header>`, etc.).
 
-**Why it’s important:**
-
+**Why it's important:**
 - **Accessibility**: Helps screen readers and assistive technologies understand content structure.
 - **SEO**: Search engines use semantic tags to better index and rank content.
 - **Maintainability**: Easier for developers to read and update code.
@@ -13,7 +15,6 @@ Semantic HTML provides meaning to the web page structure by using tags that refl
 
 **When and where to use:**  
 Always prefer semantic tags when the content has a clear role or meaning. For example:
-
 - Use `<nav>` for site navigation.
 - Use `<article>` for blog posts or news entries.
 - Use `<footer>` for contact info and legal disclaimers.
@@ -614,3 +615,642 @@ Use <span> for styling or handling small inline content (e.g., changing the colo
 Both tags are commonly used with CSS and JavaScript to control the appearance and behavior of content.
 
 </details> 
+
+<details>
+<summary>12. What are data attributes and in which cases do you use them?</summary>
+
+**Data attributes** are special attributes in HTML that allow storing additional information directly in HTML elements. They start with the prefix `data-` and can be in any format suitable for storing information that can be used with JavaScript.
+
+### Syntax of data attributes:
+
+```html
+<div data-user-id="123" data-role="admin">John Doe</div>
+```
+
+In this example:
+* `data-user-id` stores the user ID.
+* `data-role` stores the user's role.
+
+### How to use:
+
+Data attributes are typically used to transfer small pieces of data between HTML and JavaScript or CSS without the need for additional server requests or other mechanisms.
+
+### Use cases:
+
+1. **Passing data to JavaScript**: Used to access special information on the page through JavaScript. This can be convenient for working with UIs without making server requests.
+
+**Example:**
+```html
+<div id="user" data-user-id="123" data-role="admin">John Doe</div>
+
+<script>
+  const userDiv = document.getElementById('user');
+  const userId = userDiv.getAttribute('data-user-id');
+  const userRole = userDiv.dataset.role;
+  
+  console.log(userId);  // 123
+  console.log(userRole); // admin
+</script>
+```
+
+2. **CSS selectors with data attributes**: You can style elements based on the values of `data-` attributes.
+
+**Example:**
+```html
+<div data-status="active">Active User</div>
+<div data-status="inactive">Inactive User</div>
+
+<style>
+  [data-status="active"] { color: green; }
+  [data-status="inactive"] { color: red; }
+</style>
+```
+
+3. **Storing temporary data for events**: When you want to store information that is only used on the frontend (e.g., during clicks on elements).
+
+**Example**: You can store product information in a button:
+```html
+<button data-product-id="1001" data-product-price="25.99">Buy Now</button>
+
+<script>
+  const button = document.querySelector('button');
+  button.addEventListener('click', () => {
+    const productId = button.dataset.productId;
+    const productPrice = button.dataset.productPrice;
+    alert(`Product ID: ${productId}, Price: ${productPrice}`);
+  });
+</script>
+```
+
+4. **Instead of hidden fields**: Data attributes can be used to store information that is not displayed in the UI but is needed for working with JavaScript. They are an alternative to hidden form fields or other methods of data storage.
+
+5. **Enabling dynamic interaction on the client**: Data attributes allow binding data to HTML elements that can dynamically change, and these changes can be tracked or processed through JavaScript.
+
+### Advantages:
+* Ease of use: no need to change database structure or server APIs to work with additional data.
+* Readability and clarity: data is stored directly in HTML, making it easy to see and understand.
+* Easy integration with JavaScript.
+
+### Disadvantages:
+* Data attributes are not suitable for storing large amounts of data.
+* They should not be used to store confidential information, as this data is easily accessible in the HTML code and can be viewed by anyone.
+
+### Conclusion:
+Data attributes are a convenient tool for storing additional data that may be needed for frontend work, especially in cases where you want to avoid complex interactions with the server or databases.
+
+</details>
+
+<details>
+<summary>13. How are class and id attributes used? What is the difference between classes and identifiers? </summary>
+
+The `class` and `id` attributes are used in HTML to give elements unique or shared identifiers, which help style elements using CSS or manipulate them through JavaScript. While these attributes have similar functions, there are several key differences between them.
+
+**Class Attribute**
+
+1. **Purpose**: The `class` attribute is used to group multiple elements so that common styles or functionality can be applied to them. An element can have one or more classes, separated by spaces.
+
+2. **Usage**:
+   * **CSS**: Classes allow styles to be applied to groups of elements.
+   * **JavaScript**: Used to reference groups of elements or to dynamically change classes.
+
+**Example of using `class` in HTML**:
+```html
+<div class="content box">This is a content box</div>
+<p class="content">This is a paragraph inside the content</p>
+```
+
+**CSS** for class:
+```css
+.content {
+  font-size: 16px;
+  color: blue;
+}
+.box {
+  border: 1px solid black;
+}
+```
+
+**JavaScript** for class:
+```javascript
+const elements = document.getElementsByClassName('content');
+console.log(elements.length); // Returns the number of elements with class "content"
+```
+
+3. **Can be used for multiple elements**: The same class can be assigned to many elements on a page, allowing them to share common styles or functionality.
+
+**ID Attribute**
+
+1. **Purpose**: The `id` attribute is used to **uniquely** identify a single element on a page. An `id` must be unique for each element, meaning there cannot be two elements with the same `id` on a page.
+
+2. **Usage**:
+   * **CSS**: Used to style a specific element.
+   * **JavaScript**: Used to access or manipulate a specific element.
+
+**Example of using `id` in HTML**:
+```html
+<div id="header">This is the header</div>
+```
+
+**CSS** for identifier:
+```css
+#header {
+  background-color: gray;
+  font-size: 24px;
+}
+```
+
+**JavaScript** for identifier:
+```javascript
+const header = document.getElementById('header');
+console.log(header.textContent); // Outputs the text of the element with id "header"
+```
+
+3. **Uniqueness**: Each element should have a **unique** `id`. This is important because `id` is used to unambiguously identify an element.
+
+**Main differences between `class` and `id`**:
+
+| Characteristic | `class` | `id` |
+|----------------|---------|------|
+| **Uniqueness** | Can be assigned to many elements | Unique for each element |
+| **Usage** | For grouping elements | For identifying a single element |
+| **CSS Selector** | Period (`.`), e.g., `.content` | Hash mark (`#`), e.g., `#header` |
+| **CSS Specificity** | Lower specificity (lower priority) | Higher specificity (higher priority) |
+| **JavaScript** | `getElementsByClassName()` or `querySelectorAll()` | `getElementById()` or `querySelector()` |
+
+**When to use**:
+* Use `class` when you want to apply the same style or functionality to multiple elements.
+* Use `id` when you need to identify a **specific** element, such as a header, form, or unique block.
+
+Proper use of `class` and `id` helps structure HTML code, improves its readability, and makes it convenient for styling and interaction through JavaScript.
+</details>
+
+<details>
+<summary>14. What are internal and external hyperlinks and what attributes do they have?</summary>
+
+**Hyperlinks** in HTML are links to other resources or pages, created using the `<a>` tag. They can be **internal** (links to other pages or parts of the same site) or **external** (links to other websites). Both types of hyperlinks have attributes that provide functionality.
+
+## 1. Internal Hyperlinks
+
+**Internal hyperlinks** lead to other pages or sections within the same website.
+
+Example:
+```html
+<a href="/about.html">About Us</a>
+```
+
+This is an example of an internal link that leads to "about.html" page located in the same directory of the site.
+
+**Attributes:**
+* `href`: mandatory attribute that specifies the path to the page or element. For internal hyperlinks, you can use relative paths:
+   * `/page.html` (relative path to a page)
+   * `#section` (link to a section on the current page)
+
+**Example of an anchor** (internal link to a section):
+```html
+<a href="#contact">Contacts</a>
+<div id="contact">
+  <h2>Contact Information</h2>
+</div>
+```
+
+In this example, the link leads to an element with `id="contact"` on the same page.
+
+## 2. External Hyperlinks
+
+**External hyperlinks** lead to other websites different from the current one.
+
+Example:
+```html
+<a href="https://www.example.com">Visit example</a>
+```
+
+This is an external link that leads to the "example.com" website.
+
+**Attributes:**
+* `href`: specifies the full URL of the external resource (https://, http://)
+* `target="_blank"`: opens the link in a new browser tab or window
+* `rel="noopener noreferrer"`: used with `target="_blank"` to prevent potential security and performance issues (relates to control transfer between pages)
+
+**Example with attributes** `target` and `rel`:
+```html
+<a href="https://www.google.com" target="_blank" rel="noopener noreferrer">Google</a>
+```
+
+In this case, the page will open in a new tab, and additional protection against external threats will be established.
+
+## Main Attributes for Hyperlinks:
+
+1. `href` — the main attribute that specifies the address where the link leads.
+   * Internal: `/about.html`, `#section`
+   * External: `https://example.com`
+
+2. `target` — specifies how to open the link:
+   * `_self`: opens the link in the same window (default value)
+   * `_blank`: opens the link in a new tab or window
+
+3. `rel` — used to define the relationship between the current page and the linked page. Usually used with the `target="_blank"` attribute to avoid potential security threats.
+   * `noopener`: prevents the new tab from having access to the page from which the link was opened
+   * `noreferrer`: does not transmit information about the page from which the transition was made
+
+4. `title` — shows tooltip text when the user hovers over the link.
+```html
+<a href="https://example.com" title="Visit Example Site">Example</a>
+```
+
+## Conclusion:
+* **Internal hyperlinks** are used for navigation between pages of one website.
+* **External hyperlinks** lead to other websites.
+* The main attribute of hyperlinks is `href`, while additional attributes such as `target` and `rel` are used to define link behavior.
+</details>
+
+<details>
+<summary>15. What do you know about SVG? What are the options for adding SVG to website pages? How do they differ?</summary>
+
+**SVG (Scalable Vector Graphics)** is a vector graphic format used to display two-dimensional graphics on web pages. SVG is based on XML, which allows both simple and complex vector images to be described using code. The main advantages of SVG are:
+
+* **Scalability**: SVG images don't lose quality when resized, making them ideal for responsive design.
+* **Editability**: SVG can be edited directly in a text editor since it's a text-based format.
+* **Animation**: SVG supports animations and interactivity through CSS and JavaScript.
+* **SEO-friendly**: SVG graphics can be indexed by search engines, which improves SEO.
+
+## Options for Adding SVG to Website Pages
+
+### 1. Inserting SVG Code Directly into HTML
+
+```html
+<svg width="100" height="100">
+  <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" />
+</svg>
+```
+
+* **Advantages**:
+  * Easy access to styling and animation through CSS and JavaScript.
+  * All SVG elements are available for manipulation.
+* **Disadvantages**:
+  * Can increase the size of HTML code if the image is complex.
+
+### 2. Using the `<img>` Tag
+
+```html
+<img src="image.svg" alt="Description of image" />
+```
+
+* **Advantages**:
+  * Simple to use; suitable for basic SVG images.
+  * Appropriate for cases where interaction with SVG content is not needed.
+* **Disadvantages**:
+  * Limited access to styling and animation since the SVG is not part of the DOM.
+
+### 3. Using the `<object>` Tag
+
+```html
+<object type="image/svg+xml" data="image.svg">Your browser does not support SVG</object>
+```
+
+* **Advantages**:
+  * Can be used to connect SVG that contains embedded scripts and styles.
+  * If SVG is not supported, alternative text can be specified.
+* **Disadvantages**:
+  * Doesn't always provide access to the DOM for manipulation.
+
+### 4. Using CSS as a Background
+
+```css
+.example { background-image: url('image.svg'); }
+```
+
+* **Advantages**:
+  * Easy to use for background images.
+* **Disadvantages**:
+  * No interactivity or ability to manipulate SVG content.
+
+### 5. Using the `<iframe>` Tag
+
+```html
+<iframe src="image.svg"></iframe>
+```
+
+* **Advantages**:
+  * Can isolate SVG from the main page, which is useful for security.
+* **Disadvantages**:
+  * Limited interactivity with SVG, cannot be styled with CSS from the main page.
+
+## Conclusion
+
+Each method of adding SVG to web pages has its advantages and disadvantages, and the choice of method depends on the specific needs of the project, such as interactivity, accessibility to SVG elements, and ease of use. If maximum flexibility is needed, the best choice is to insert SVG directly into HTML. If you just need to display an image, the `<img>` or `<object>` tags will work well.
+</details>
+
+# Frontend Interview Questions and Answers
+
+<details>
+<summary>16. How do you create a form in HTML and ensure its validation?</summary>
+
+Creating a form in HTML and ensuring its validation are important steps when developing web applications. Here's how to do it:
+
+## 1. Creating HTML Forms
+
+Here's a basic example of a form containing different types of input fields:
+
+```html
+<form id="myForm">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" required><br><br>
+  
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" required><br><br>
+  
+  <label for="password">Password:</label>
+  <input type="password" id="password" name="password" required minlength="6"><br><br>
+  
+  <label for="age">Age:</label>
+  <input type="number" id="age" name="age" min="18" max="100" required><br><br>
+  
+  <input type="submit" value="Submit">
+</form>
+```
+
+## 2. Explanation of Form Fields
+
+* `<form>`: The main tag for creating a form. The `id` attribute can set an identifier for JavaScript or CSS.
+* `<label>`: Used to describe input fields. The `for` attribute links the label with the corresponding field.
+* `<input>`: Used to create input fields.
+   * `type`: Defines the field type (text, email, password, number, etc.).
+   * `required`: The field is mandatory to fill out.
+   * `minlength`, `min`, `max`: Define minimum/maximum length and numerical limitations.
+* `<input type="submit">`: Button to submit the form.
+
+## 3. Form Validation
+
+HTML provides basic form validation using attributes such as `required`, `minlength`, `min`, `max`, `pattern`, etc. However, for more complex checks, JavaScript can be used.
+
+Example of validation with JavaScript:
+
+```html
+<script>
+  document.getElementById('myForm').addEventListener('submit', function(event) {
+    let valid = true;
+    
+    // Check if name exists
+    const name = document.getElementById('name').value;
+    if (name.trim() === '') {
+      valid = false;
+      alert('Name cannot be empty');
+    }
+    
+    // Check if email exists
+    const email = document.getElementById('email').value;
+    if (!email.includes('@')) {
+      valid = false;
+      alert('Invalid email');
+    }
+    
+    // If validation fails, cancel form submission
+    if (!valid) {
+      event.preventDefault();
+    }
+  });
+</script>
+```
+
+## 4. Explanation of Validation
+
+* `addEventListener`: Adds an event handler for the form to listen for the `submit` event.
+* **Field Verification**: You can perform various checks for each field:
+   * For the **name** field, it checks if it's not empty.
+   * For the **email** field, it checks if it contains the "@" symbol.
+* `event.preventDefault()`: Cancels the browser's default behavior for form submission if validation fails.
+
+## Conclusion
+
+Thus, you can create an HTML form with basic validation using HTML attributes and JavaScript for more detailed checks. This provides a better experience for users, avoiding errors when filling out the form.
+</details>
+
+<details>
+<summary>17. What are the types of lists in HTML? What are ul / ol / dl?</summary>
+
+In HTML, there are three main types of lists used to organize and structure information:
+
+1. **Ordered Lists (`<ol>`)**  
+   Ordered lists are used when the sequence of items matters. Each list item is automatically numbered.
+
+   **Example:**
+   ```html
+   <ol>
+     <li>First</li>
+     <li>Second</li>
+     <li>Third</li>
+   </ol>
+   ```
+   This will render as:
+   - First
+   - Second
+   - Third
+
+2. **Unordered Lists (`<ul>`)**  
+   Unordered lists are used when the sequence of items does not matter. Each item is marked with a bullet by default.
+
+   **Example:**
+   ```html
+   <ul>
+     <li>Apple</li>
+     <li>Banana</li>
+     <li>Orange</li>
+   </ul>
+   ```
+   This will render as:
+   - Apple
+   - Banana
+   - Orange
+
+3. **Definition Lists (`<dl>`)**  
+   Definition lists are used to present terms and their definitions. A definition list consists of terms (`<dt>`) and descriptions (`<dd>`).
+
+   **Example:**
+   ```html
+   <dl>
+     <dt>HTML</dt>
+     <dd>A markup language used to create web pages.</dd>
+
+     <dt>CSS</dt>
+     <dd>A styling language used to design web pages.</dd>
+
+     <dt>JavaScript</dt>
+     <dd>A programming language used to create interactive elements on web pages.</dd>
+   </dl>
+   ```
+   This will render as:
+   - **HTML**: A markup language used to create web pages.
+   - **CSS**: A styling language used to design web pages.
+   - **JavaScript**: A programming language used to create interactive elements on web pages.
+
+**Summary:**
+- `<ol>`: Ordered list, where the sequence matters.
+- `<ul>`: Unordered list, where the sequence does not matter.
+- `<dl>`: Definition list, consisting of terms and their definitions.
+
+These types of lists are fundamental tools in HTML for organizing content, improving readability, and structuring information clearly.
+
+</details>
+
+<details>
+<summary>18. What is an iframe and what is it used for?</summary>
+
+An `<iframe>` (inline frame) is an HTML tag that allows embedding one HTML document within another. In other words, it creates a "window" or "frame" through which you can display another web page, video, map, or other content without leaving the main page.
+
+### Key Features and Uses of `<iframe>`:
+
+#### 1. Embedding Content:
+`<iframe>` is often used to embed content from other websites, such as YouTube videos, Google Maps, or third-party widgets.
+
+#### 2. Displaying External Output:
+It can display images, forms, or PDF documents from other sources.
+
+#### 3. Analytics Dashboards:
+Some companies use `<iframe>` to show analytics dashboards that shouldn't interfere with the site's primary navigation.
+
+### Example:
+```html
+<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" width="560" height="315" frameborder="0" allowfullscreen></iframe>
+```
+This embeds a YouTube video into the page.
+
+### Common `<iframe>` Attributes:
+- **`src`**: The URL of the document or resource to display in the iframe.
+- **`width`** and **`height`**: Define the dimensions of the iframe.
+- **`frameborder`**: Controls the visibility of the iframe's border (deprecated in HTML5).
+- **`allowfullscreen`**: Allows content (e.g., video) to be viewed in fullscreen mode.
+
+### Pros and Cons:
+
+**Pros:**
+- Easy way to embed external content.
+- Allows displaying external resources without altering the main page's content.
+
+**Cons:**
+- **Security risks**: Potential misuse for malicious purposes like clickjacking.
+- **SEO issues**: Content in iframes might not be indexed properly by search engines.
+
+### Conclusion:
+The `<iframe>` tag is a powerful tool for embedding external content into web pages, but its use should be carefully managed to ensure security and search engine optimization.
+
+</details>
+
+<details>
+<summary>19. What are the methods of submitting form data in HTML?</summary>
+
+In HTML, there are two primary methods for submitting form data:
+
+### 1. GET Method
+
+**Description**: Form data is sent via the URL. All form parameters are appended to the URL as a query string.
+
+**Syntax**:
+
+```html
+<form action="url" method="get">
+    <!-- form fields -->
+</form>
+```
+
+**Advantages**:
+- Data is visible in the URL, which can be useful for sharing (e.g., filters on pages).
+- Suitable for requests that do not alter server data (e.g., search).
+
+**Disadvantages**:
+- URL length is limited (depends on the browser, usually around 2000 characters).
+- Less secure as sensitive data (e.g., passwords) is exposed in the URL.
+
+---
+
+### 2. POST Method
+
+**Description**: Form data is sent in the body of the HTTP request rather than in the URL.
+
+**Syntax**:
+
+```html
+<form action="url" method="post">
+    <!-- form fields -->
+</form>
+```
+
+**Advantages**:
+- Can send large amounts of data (no length limit).
+- More secure for sensitive data since it is not shown in the URL.
+- Typically used for operations that modify server data (e.g., registration, login).
+
+**Disadvantages**:
+- Not suitable for bookmarking or sharing, as the data is not in the URL.
+
+---
+
+### Choosing a Method
+
+When choosing between GET and POST, consider the type of data you're sending and the context of its use.  
+- Use **GET** for data retrieval (e.g., search queries).  
+- Use **POST** for data modification or when sending sensitive information.
+
+</details>
+
+<details>
+<summary><strong>20. What are the main differences between block-level and inline elements in HTML? How do they affect page structure?</strong></summary>
+
+In HTML, elements are categorized into two main types: block-level and inline elements. Here's a breakdown of their key differences:
+
+<ol>
+  <li>
+    <strong>Block-level elements</strong><br />
+    <ul>
+      <li><strong>Definition:</strong> These elements take up the full width of their container and start on a new line.</li>
+      <li><strong>Examples:</strong> <code>&lt;div&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;h1&gt;</code> to <code>&lt;h6&gt;</code>, <code>&lt;ul&gt;</code>, <code>&lt;ol&gt;</code>, <code>&lt;table&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;header&gt;</code>, <code>&lt;footer&gt;</code>, <code>&lt;nav&gt;</code>.</li>
+      <li><strong>Impact:</strong> They create structural blocks in the document and can contain other block-level or inline elements. This is useful for organizing complex layouts.</li>
+    </ul>
+  </li>
+  <li>
+    <strong>Inline elements</strong><br />
+    <ul>
+      <li><strong>Definition:</strong> These elements take only as much width as their content requires and do not start on a new line.</li>
+      <li><strong>Examples:</strong> <code>&lt;span&gt;</code>, <code>&lt;a&gt;</code>, <code>&lt;img&gt;</code>, <code>&lt;strong&gt;</code>, <code>&lt;em&gt;</code>, <code>&lt;label&gt;</code>, <code>&lt;input&gt;</code>, <code>&lt;button&gt;</code>.</li>
+      <li><strong>Impact:</strong> Typically used for styling or embedding interactive parts within text without breaking flow.</li>
+    </ul>
+  </li>
+</ol>
+
+<strong>Summary Table:</strong>
+
+<table>
+  <thead>
+    <tr>
+      <th>Feature</th>
+      <th>Block-level Elements</th>
+      <th>Inline Elements</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Width</td>
+      <td>Full width of the container</td>
+      <td>Only as wide as content</td>
+    </tr>
+    <tr>
+      <td>Line Break</td>
+      <td>Starts on a new line</td>
+      <td>Stays in the same line</td>
+    </tr>
+    <tr>
+      <td>Examples</td>
+      <td><code>&lt;div&gt;</code>, <code>&lt;p&gt;</code></td>
+      <td><code>&lt;span&gt;</code>, <code>&lt;a&gt;</code></td>
+    </tr>
+    <tr>
+      <td>Purpose</td>
+      <td>Structure and layout</td>
+      <td>Formatting and interaction</td>
+    </tr>
+  </tbody>
+</table>
+
+<strong>Conclusion:</strong>
+Understanding the distinction between block-level and inline elements is crucial for structuring HTML documents effectively and applying CSS for the desired layout and visual behavior.
+
+</details>
