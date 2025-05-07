@@ -1252,3 +1252,396 @@ In HTML, elements are categorized into two main types: block-level and inline el
 Understanding the distinction between block-level and inline elements is crucial for structuring HTML documents effectively and applying CSS for the desired layout and visual behavior.
 
 </details>
+
+<details>
+<summary><strong>21. What are CSS selectors? Provide examples.</strong></summary>
+
+CSS selectors are tools that allow styles to be applied to specific HTML elements based on their properties. They define which elements in a document will be styled.
+
+### Basic types of CSS selectors:
+
+**1. Type Selector**  
+Applies styles to all elements of a specific type.  
+Example:
+```css
+p {
+  color: blue;
+}
+```
+This rule changes the text color of all `<p>` tags to blue.
+
+**2. Class Selector**  
+Targets elements with a specific class using a dot (`.`) before the class name.  
+Example:
+```css
+.btn {
+  background-color: green;
+}
+```
+This applies styles to all elements with the class `btn`.
+
+**3. ID Selector**  
+Targets a specific element with a unique ID using a hash (`#`).  
+Example:
+```css
+#header {
+  font-size: 24px;
+}
+```
+This rule changes the font size of the element with ID `header`.
+
+**4. Attribute Selector**  
+Selects elements with a specific attribute or attribute value.  
+Example:
+```css
+input[type="text"] {
+  border: 1px solid black;
+}
+```
+This styles all `<input>` elements with `type="text"`.
+
+**5. Combinators**
+
+- **Descendant Selector (` `)**: Targets elements that are descendants of another element.  
+Example:
+```css
+div p {
+  color: red;
+}
+```
+Styles all `<p>` tags inside a `<div>`.
+
+- **Child Selector (`>`)**: Targets only direct children.  
+Example:
+```css
+ul > li {
+  list-style: none;
+}
+```
+Applies styles only to `<li>` elements directly under a `<ul>`.
+
+- **Adjacent Sibling Selector (`+`)**: Styles the element immediately following another.  
+Example:
+```css
+h1 + p {
+  margin-top: 0;
+}
+```
+Applies styles to the first `<p>` that comes right after an `<h1>`.
+
+**6. Group Selector**  
+Applies the same styles to multiple elements.  
+Example:
+```css
+h1, h2, h3 {
+  font-family: Arial, sans-serif;
+}
+```
+This sets the font for `<h1>`, `<h2>`, and `<h3>`.
+
+**Conclusion:**
+CSS selectors help efficiently target and style elements on a webpage, enabling you to create structured and visually appealing layouts.
+
+</details>
+
+<details>
+<summary><strong>22. How does inheritance work in CSS?</strong></summary>
+
+Inheritance in CSS allows child elements to automatically receive styles from their parent elements. This helps avoid redundant code and simplifies style management.
+
+### Inherited properties:
+Some CSS properties are inherited by default. For example, if you set the text color on a parent element, all child elements inherit that color unless otherwise specified.
+
+Example:
+```css
+body {
+  color: blue;
+}
+```
+All text elements inside `<body>` will appear blue because they inherit the color.
+
+**Common inherited properties include:**
+- `color`
+- `font-family`
+- `font-size`
+- `line-height`
+- `text-align`
+- `visibility`
+
+### Non-inherited properties:
+Many properties, especially those related to box model and layout, are not inherited by default.
+
+Example:
+```css
+div {
+  margin: 20px;
+}
+```
+The `margin` property will not be inherited by child elements unless explicitly specified.
+
+### Forcing inheritance with `inherit`:
+You can force inheritance for a property by using the `inherit` value.
+
+Example:
+```css
+div {
+  border: 2px solid red;
+}
+
+p {
+  border: inherit; /* Forces the paragraph to inherit the border */
+}
+```
+
+### Default values:
+If a child element does not inherit a property, it falls back to the browser’s default styles for that property.
+
+### Inheritance context:
+Inheritance only works within the DOM hierarchy—styles are passed down from parent to child.
+
+Example:
+```html
+<div class="parent">
+  <p class="child">This is a paragraph.</p>
+</div>
+```
+```css
+.parent {
+  color: green;
+  font-size: 18px;
+}
+
+.child {
+  font-size: inherit; /* Inherits font-size from .parent */
+}
+```
+In this example, the paragraph will be green and have a font size of 18px.
+
+**Conclusion:**  
+Inheritance in CSS makes it easier to apply consistent styles and reduce repetition. You can control inheritance using values like `inherit` for greater flexibility.
+
+</details>
+
+<details>
+<summary><strong>23. What is the CSS Box Model and how can it be changed?</strong></summary>
+
+The CSS Box Model is a fundamental concept that describes how elements are structured and how their dimensions are calculated on a web page. It consists of four main parts:
+
+### Components of the Box Model:
+
+- **Content**: The area where text and images appear. Its size is defined by the `width` and `height` properties.
+
+- **Padding**: Space between the content and the border. It’s defined by the `padding` property and adds to the total size of the element.
+
+- **Border**: Surrounds the padding (if any) and content. Defined using the `border` property.
+
+- **Margin**: The outermost space that separates the element from others. Set with the `margin` property and does not add to the element's box size.
+
+### Visual Structure:
+```
++---------------------------+
+|        Margin             |
+|  +---------------------+ |
+|  |      Border         | |
+|  |  +--------------+   | |
+|  |  |   Padding    |   | |
+|  |  | +----------+ |   | |
+|  |  | |  Content | |   | |
+|  |  | +----------+ |   | |
+|  |  +--------------+   | |
+|  +---------------------+ |
++---------------------------+
+```
+
+### Default Model: `content-box`
+By default, browsers use `box-sizing: content-box`, meaning `width` and `height` apply only to the content area. Padding and borders add to the total size.
+
+Example:
+```css
+.box {
+  width: 200px;
+  height: 100px;
+  padding: 20px;
+  border: 5px solid black;
+}
+```
+Total width: 200 + 40 (padding) + 10 (border) = **250px**
+
+### Alternate Model: `border-box`
+To include padding and border within the declared width and height, use `box-sizing: border-box`.
+
+Example:
+```css
+.box {
+  width: 200px;
+  height: 100px;
+  padding: 20px;
+  border: 5px solid black;
+  box-sizing: border-box;
+}
+```
+Total width remains **200px**, making layouts more predictable.
+
+### Summary of `box-sizing` values:
+- `content-box`: (default) width/height = content only
+- `border-box`: width/height = content + padding + border
+
+### Benefits of `border-box`:
+- Easier layout calculations
+- Better control over responsive designs
+- Prevents layout shifts due to added padding/border
+
+**Conclusion:**  
+The box model defines how elements take up space. Switching to `border-box` simplifies layout management by including padding and borders in the element’s total size.
+
+</details>
+
+<details>
+<summary><strong>24. What is the difference between margin and padding?</strong></summary>
+
+The key difference between margin and padding lies in where they create space: **outside** the element (margin) vs **inside** the element (padding).
+
+### 1. Margin (Outer Spacing)
+- **Definition**: The space between the element’s border and surrounding elements.
+- **Purpose**: Controls spacing **outside** the element, separating it from neighboring elements.
+- **Effect**: Does **not** affect the element’s box size.
+  
+Example:
+```css
+div {
+  margin: 20px;
+}
+```
+This creates 20px of space around the `<div>`, separating it from other elements.
+
+---
+
+### 2. Padding (Inner Spacing)
+- **Definition**: The space between the content of the element and its border.
+- **Purpose**: Controls spacing **inside** the element, between the content and the edge.
+- **Effect**: **Adds** to the element’s size in `content-box` model.
+
+Example:
+```css
+div {
+  padding: 20px;
+}
+```
+This creates 20px of space between the `<div>` content and its border.
+
+---
+
+### Visual Comparison
+```
++---------------------------+  ← Margin
+|       Border              |
+|  +---------------------+  |
+|  |     Padding         |  |
+|  |  +--------------+   |  |
+|  |  |   Content    |   |  | ← Content
+|  |  +--------------+   |  |
+|  +---------------------+  |
++---------------------------+
+```
+
+---
+
+### Summary:
+- **Margin**: Outer space, affects spacing between elements.
+- **Padding**: Inner space, affects spacing inside an element.
+
+</details>
+
+<details>
+<summary><strong>25. What is Flexbox? How to build layouts using Flexbox or Grid, and when to use each?</strong></summary>
+
+### What is Flexbox?
+Flexbox (Flexible Box Layout) — це CSS-механізм для побудови одновимірних макетів (в ряд або в колонку). Він дозволяє зручно вирівнювати, розподіляти простір і створювати адаптивні інтерфейси.
+
+### Основні поняття:
+- **Flex-контейнер** — елемент з `display: flex`.
+- **Flex-елементи** — безпосередні нащадки контейнера.
+
+### Властивості Flexbox:
+#### Для контейнера:
+- `display: flex` — активує Flexbox.
+- `flex-direction` — напрямок елементів (`row`, `column`).
+- `justify-content` — вирівнювання по головній осі (`flex-start`, `center`, `space-between`).
+- `align-items` — вирівнювання по поперечній осі (`stretch`, `center`, `flex-end`).
+- `flex-wrap` — дозволяє переносити елементи (`nowrap`, `wrap`).
+
+#### Для елементів:
+- `flex-grow` — як елемент розтягується.
+- `flex-shrink` — як елемент стискається.
+- `flex-basis` — базовий розмір до розтягування.
+- `align-self` — індивідуальне вирівнювання елемента.
+
+### Приклад Flexbox:
+```css
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.item {
+  flex: 1;
+}
+```
+```html
+<div class="container">
+  <div class="item">Item 1</div>
+  <div class="item">Item 2</div>
+  <div class="item">Item 3</div>
+</div>
+```
+
+---
+
+### Що таке CSS Grid?
+Grid — це двовимірна система верстки, що дозволяє розміщувати елементи по рядках **і** по стовпцях.
+
+### Властивості Grid:
+#### Для контейнера:
+- `display: grid` — активує Grid.
+- `grid-template-columns`, `grid-template-rows` — визначають кількість і розміри стовпців/рядків.
+- `gap` — відстань між комірками.
+- `justify-items`, `align-items` — вирівнювання в комірках.
+- `grid-template-areas` — іменовані області макету.
+
+#### Для елементів:
+- `grid-column`, `grid-row` — скільки стовпців/рядків займає елемент.
+- `grid-area` — прив’язка до області.
+
+### Приклад Grid:
+```css
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 100px;
+  gap: 10px;
+}
+.item {
+  background-color: lightgray;
+}
+```
+```html
+<div class="container">
+  <div class="item">Item 1</div>
+  <div class="item">Item 2</div>
+  <div class="item">Item 3</div>
+</div>
+```
+
+---
+
+### Коли що використовувати:
+- **Flexbox** — ідеально для **одновимірних макетів** (тільки ряд або тільки стовпець), наприклад: горизонтальне меню, картки в ряд.
+- **Grid** — чудово підходить для **двовимірних макетів**, де потрібно одночасно керувати рядками і стовпцями, наприклад: сторінка з боковою панеллю, сітка з товарами.
+
+### Висновок:
+- Для простих лінійних розташувань — Flexbox.
+- Для складніших сіткових макетів — Grid.
+
+</details>
+
