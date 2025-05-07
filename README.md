@@ -940,8 +940,6 @@ In this case, the page will open in a new tab, and additional protection against
 Each method of adding SVG to web pages has its advantages and disadvantages, and the choice of method depends on the specific needs of the project, such as interactivity, accessibility to SVG elements, and ease of use. If maximum flexibility is needed, the best choice is to insert SVG directly into HTML. If you just need to display an image, the `<img>` or `<object>` tags will work well.
 </details>
 
-# Frontend Interview Questions and Answers
-
 <details>
 <summary>16. How do you create a form in HTML and ensure its validation?</summary>
 
