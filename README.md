@@ -1645,3 +1645,387 @@ Grid — це двовимірна система верстки, що дозв�
 
 </details>
 
+<details>
+<summary><strong>26. What are media queries and how are they used?</strong></summary>
+
+### What are Media Queries?
+Media queries are a **CSS feature** used to apply styles based on the characteristics of the device or screen displaying the content.
+They’re essential for **responsive design**, helping layouts adapt to different screen sizes like phones, tablets, and desktops.
+
+### Common Media Query Features:
+- **Width**: `width`, `min-width`, `max-width`
+- **Height**: `height`, `min-height`, `max-height`
+- **Orientation**: `portrait`, `landscape`
+- **Pixel Density**: `resolution`, `min-resolution`
+- **Device Type**: `screen`, `print`, etc.
+
+### Syntax:
+```css
+@media (condition) {
+  /* CSS rules */
+}
+```
+
+### Example:
+```css
+/* Base styles for all devices */
+body {
+  font-size: 16px;
+  background-color: white;
+}
+
+/* Styles for screens wider than 768px */
+@media (min-width: 768px) {
+  body {
+    font-size: 18px;
+    background-color: lightgray;
+  }
+}
+
+/* Styles for screens wider than 1200px */
+@media (min-width: 1200px) {
+  body {
+    font-size: 20px;
+    background-color: darkgray;
+  }
+}
+```
+
+### Use Cases:
+- Adjust font sizes or layouts for tablets and desktops
+- Hide or show elements based on screen size
+- Optimize images and graphics for high-resolution displays
+- Provide different designs for portrait vs landscape mode
+
+### Orientation Example:
+```css
+@media (orientation: landscape) {
+  /* styles for landscape mode */
+}
+```
+
+### Resolution Example:
+```css
+@media (min-resolution: 300dpi) {
+  /* styles for high-density displays */
+}
+```
+
+### Why Are Media Queries Important?
+- Enable responsive design for multiple devices
+- Improve user experience across screen sizes
+- Reduce need for separate mobile websites
+- Make layouts flexible and scalable
+
+</details>
+
+<details>
+<summary><strong>27. How can you hide an element using CSS? Do opacity: 0, display: none, and visibility: hidden work the same way?</strong></summary>
+
+There are several ways to hide an element in CSS. Each method behaves differently, especially in terms of layout space and interactivity:
+
+### 1. `display: none;`
+- **Removes** the element from the document flow.
+- It won’t be visible and won’t take up space.
+
+```css
+.hidden-element {
+  display: none;
+}
+```
+
+### 2. `visibility: hidden;`
+- Hides the element **but keeps its space** in the layout.
+- Other elements won’t shift to fill the space.
+
+```css
+.hidden-element {
+  visibility: hidden;
+}
+```
+
+### 3. `opacity: 0;`
+- Makes the element **completely transparent**.
+- It still takes up space and remains **interactive** (clickable).
+
+```css
+.hidden-element {
+  opacity: 0;
+}
+```
+
+### Key Differences:
+| Property           | Visible? | Takes Space? | Interactive? |
+|--------------------|----------|---------------|----------------|
+| `display: none`    | ❌       | ❌            | ❌             |
+| `visibility: hidden` | ❌     | ✅            | ❌             |
+| `opacity: 0`       | ❌       | ✅            | ✅             |
+
+### When to Use Each:
+- Use `display: none` to completely remove an element from the layout.
+- Use `visibility: hidden` if you want the space to remain but the element to be hidden.
+- Use `opacity: 0` if the element should be hidden but still **respond to events** (like for animations or transitions).
+
+</details>
+
+<details>
+<summary><strong>28. How can you center a logo on the screen using CSS?</strong></summary>
+
+Centering a logo on the screen is a common task in web design. There are several CSS techniques to achieve this depending on your needs. Here are the most common methods:
+
+### 1. Using Flexbox:
+
+```html
+<div class="container">
+  <img src="logo.png" alt="Logo" class="logo">
+</div>
+```
+
+```css
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  justify-content: center;  /* Horizontal centering */
+  align-items: center;      /* Vertical centering */
+  height: 100vh;            /* Full viewport height */
+}
+
+.logo {
+  max-width: 100px;         /* Optional size constraint */
+}
+```
+
+### 2. Using CSS Grid:
+
+```html
+<div class="container">
+  <img src="logo.png" alt="Logo" class="logo">
+</div>
+```
+
+```css
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.container {
+  display: grid;
+  place-items: center;      /* Center both horizontally and vertically */
+  height: 100vh;
+}
+
+.logo {
+  max-width: 100px;
+}
+```
+
+### 3. Using Absolute Positioning:
+
+```html
+<div class="container">
+  <img src="logo.png" alt="Logo" class="logo">
+</div>
+```
+
+```css
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.container {
+  position: relative;
+  height: 100vh;
+}
+
+.logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 100px;
+}
+```
+
+### Summary:
+- **Flexbox** is the most commonly used and is very readable.
+- **Grid** is powerful and great for layouts.
+- **Absolute positioning** gives more manual control but can be trickier with responsiveness.
+
+</details>
+
+<details>
+<summary><strong>29. How can you center a logo on the screen using CSS?</strong></summary>
+
+Centering a logo on the screen is a common task in web design. There are several CSS techniques to achieve this depending on your needs. Here are the most common methods:
+
+### 1. Using Flexbox:
+
+```html
+<div class="container">
+  <img src="logo.png" alt="Logo" class="logo">
+</div>
+```
+
+```css
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  justify-content: center;  /* Horizontal centering */
+  align-items: center;      /* Vertical centering */
+  height: 100vh;            /* Full viewport height */
+}
+
+.logo {
+  max-width: 100px;         /* Optional size constraint */
+}
+```
+
+### 2. Using CSS Grid:
+
+```html
+<div class="container">
+  <img src="logo.png" alt="Logo" class="logo">
+</div>
+```
+
+```css
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.container {
+  display: grid;
+  place-items: center;      /* Center both horizontally and vertically */
+  height: 100vh;
+}
+
+.logo {
+  max-width: 100px;
+}
+```
+
+### 3. Using Absolute Positioning:
+
+```html
+<div class="container">
+  <img src="logo.png" alt="Logo" class="logo">
+</div>
+```
+
+```css
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.container {
+  position: relative;
+  height: 100vh;
+}
+
+.logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 100px;
+}
+```
+
+### Summary:
+- **Flexbox** is the most commonly used and is very readable.
+- **Grid** is powerful and great for layouts.
+- **Absolute positioning** gives more manual control but can be trickier with responsiveness.
+
+</details>
+
+<details>
+<summary><strong>30. How to position a close button (cross) at the top right corner of an element?</strong></summary>
+
+To place a close button (cross) at the top right corner of an element (e.g., a modal window or notification), you can use CSS positioning. Below are two common approaches to implement this:
+
+### 1. Using Absolute Positioning:
+
+```html
+<div class="modal">
+  <button class="close-button">✖</button>
+  <h2>Title</h2>
+  <p>Content of the modal window.</p>
+</div>
+```
+
+```css
+.modal {
+  position: relative; /* Container for positioning */
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 300px;
+}
+
+.close-button {
+  position: absolute; /* Absolute positioning */
+  top: 10px; /* Distance from the top edge */
+  right: 10px; /* Distance from the right edge */
+  background: none; /* No background */
+  border: none; /* No border */
+  font-size: 20px; /* Font size */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+```
+
+### 2. Using Flexbox in the Header:
+
+If you want the close button to always be in the top right corner, you can also use Flexbox:
+
+```html
+<div class="modal">
+  <div class="header">
+    <h2>Title</h2>
+    <button class="close-button">✖</button>
+  </div>
+  <p>Content of the modal window.</p>
+</div>
+```
+
+```css
+.modal {
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 300px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between; /* Aligns elements to the edges */
+  align-items: center; /* Vertically centers */
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+```
+
+### Which Method to Choose:
+- **Absolute Positioning**: Use this if you want precise control over the button's placement, regardless of the content.
+- **Flexbox**: Use this if you want flexible positioning where elements in the header (like text and close button) align dynamically.
+
+Both methods will allow you to place the close button in the top right corner of the element.
+
+</details>
+
