@@ -2029,3 +2029,183 @@ Both methods will allow you to place the close button in the top right corner of
 
 </details>
 
+<details>
+<summary><strong>31. How to make the last item in a list red regardless of its length without JavaScript?</strong></summary>
+
+Yes, you can use the `:last-child` pseudo-class to style the last item of a list without JavaScript. Here’s how you can do it:
+
+### HTML:
+```html
+<ul>
+  <li>Item 1</li>
+  <li>Item 2</li>
+  <li>Item 3</li>
+  <li>Item 4</li> <!-- Last item -->
+</ul>
+```
+
+### CSS:
+```css
+li:last-child {
+  color: red; /* Changes the text color to red for the last list item */
+}
+```
+
+### Explanation:
+- `li:last-child`: This selector targets the last `<li>` element **only if** it is the last child of its parent (in this case, the `<ul>`).
+- `color: red;`: This applies a red color to the text of the last list item.
+
+This approach works for any list length—the last item will always be red, no matter how many items you add or remove.
+</details>
+
+<details>
+<summary><strong>32. What is a pseudo-class and why do we need it?</strong></summary>
+
+A **CSS pseudo-class** is a keyword added to selectors that specifies a special state of the selected elements, without needing to add extra HTML or classes. It lets you style elements based on user interaction or their position in the DOM.
+
+### Common pseudo-classes:
+
+#### `:hover`
+Applies styles when the user hovers over an element with a pointer (like a mouse):
+```css
+a:hover {
+  color: blue;
+}
+```
+
+#### `:focus`
+Styles an element when it gains focus (e.g. an input field):
+```css
+input:focus {
+  border: 2px solid green;
+}
+```
+
+#### `:active`
+Applies styles when the element is being activated (e.g. clicked):
+```css
+button:active {
+  background-color: red;
+}
+```
+
+#### `:first-child` / `:last-child`
+Selects the first or last child of a parent element:
+```css
+li:first-child {
+  font-weight: bold;
+}
+li:last-child {
+  color: red;
+}
+```
+
+#### `:nth-child(n)`
+Selects elements based on their position:
+```css
+li:nth-child(2) {
+  color: green;
+}
+```
+
+### Why use pseudo-classes?
+- **State-based styling**: Apply styles on interaction (hover, focus, active).
+- **Cleaner HTML**: No need for extra classes or JavaScript.
+- **Better UX**: Improve user feedback and accessibility.
+- **Flexible targeting**: Style elements based on position or behavior.
+
+</details>
+
+<details>
+<summary><strong>33. What are the ways to set color in CSS?</strong></summary>
+
+CSS offers several ways to define colors. Each method provides different levels of precision and flexibility:
+
+### 1. **Color names**
+Use predefined color names like `red`, `blue`, `green`, etc.:
+```css
+color: red;
+```
+Simple and readable, but limited to a fixed set of names.
+
+### 2. **Hexadecimal notation (Hex)**
+Define colors using a `#RRGGBB` or short `#RGB` format:
+```css
+color: #FF0000; /* Red */
+color: #FFF;     /* White (short form) */
+```
+
+### 3. **RGB (Red, Green, Blue)**
+Specify intensity of red, green, and blue (0–255):
+```css
+color: rgb(255, 0, 0); /* Red */
+```
+
+### 4. **RGBA (RGB + Alpha)**
+Same as RGB but includes alpha for opacity (0–1):
+```css
+color: rgba(255, 0, 0, 0.5); /* Semi-transparent red */
+```
+
+### 5. **HSL (Hue, Saturation, Lightness)**
+Set color using angle for hue, and percentages for saturation & lightness:
+```css
+color: hsl(0, 100%, 50%); /* Red */
+```
+
+### 6. **HSLA (HSL + Alpha)**
+HSL with an alpha channel for transparency:
+```css
+color: hsla(0, 100%, 50%, 0.5); /* Semi-transparent red */
+```
+
+### 7. **CSS Variables (Custom Properties)**
+Store color values in variables for reuse:
+```css
+:root {
+  --main-color: #FF0000;
+}
+element {
+  color: var(--main-color);
+}
+```
+Great for consistent theming and easy updates across the project.
+
+</details>
+
+<details>
+<summary><strong>34. What is z-index in CSS? Does every element have one?</strong></summary>
+
+### What is `z-index`?
+
+`z-index` is a CSS property that controls the vertical stacking order of elements that overlap. It only applies to elements that have a `position` value other than `static` (e.g., `relative`, `absolute`, `fixed`, or `sticky`).
+
+### How it works:
+
+- Elements with **higher `z-index` values** appear **in front** of elements with lower values.
+- If two overlapping elements have the same `z-index` or none is set, the one later in the HTML (DOM) will be on top.
+
+### Example:
+```css
+.box1 {
+  position: absolute;
+  z-index: 1;
+  background-color: red;
+}
+
+.box2 {
+  position: absolute;
+  z-index: 2;
+  background-color: blue;
+}
+```
+In this case, `.box2` will appear above `.box1`.
+
+### Does every element have a `z-index`?
+
+No — only **positioned elements** (with `position` not equal to `static`) can have an effective `z-index`. Non-positioned elements ignore this property.
+
+</details>
+
+
+
