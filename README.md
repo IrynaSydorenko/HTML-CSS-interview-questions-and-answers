@@ -2738,4 +2738,700 @@ blockquote::after {
   <p><strong>Conclusion:</strong> Maintaining cross-browser compatibility requires a proactive and consistent approach throughout development, testing, and post-launch monitoring.</p>
 </details>
 
+<details>
+  <summary><strong>46. How can HTML and CSS be used to ensure website accessibility?</strong></summary>
+
+  <p>Ensuring accessibility means making a website usable for all users, including those with disabilities. Below are essential practices using HTML and CSS to improve accessibility:</p>
+
+  <strong>1. Use semantic HTML</strong>
+  <ul>
+    <li>Tags like <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;section&gt;</code>, and <code>&lt;footer&gt;</code> help screen readers understand page structure.</li>
+  </ul>
+
+  <strong>2. Add accessibility attributes</strong>
+  <ul>
+    <li>Use <code>alt</code> attributes on images to describe their content.</li>
+    <li>Apply <code>aria-*</code> attributes to provide extra information where necessary (e.g., <code>aria-label</code>, <code>aria-hidden</code>).</li>
+  </ul>
+
+  <strong>3. Maintain proper heading structure</strong>
+  <ul>
+    <li>Use headings (<code>&lt;h1&gt;</code> through <code>&lt;h6&gt;</code>) in a logical order to reflect the content hierarchy.</li>
+  </ul>
+
+  <strong>4. Make forms accessible</strong>
+  <ul>
+    <li>Label every input with a corresponding <code>&lt;label&gt;</code>.</li>
+    <li>Use <code>required</code>, <code>aria-required</code>, and <code>aria-invalid</code> to indicate field requirements and validation.</li>
+  </ul>
+
+  <strong>5. Ensure sufficient color contrast</strong>
+  <ul>
+    <li>Text should contrast well with its background to remain readable for users with visual impairments.</li>
+    <li>Use online tools (like the WebAIM Contrast Checker) to validate contrast ratios.</li>
+  </ul>
+
+  <strong>6. Use CSS wisely for accessibility</strong>
+  <ul>
+    <li>Avoid using <code>display: none</code> for important content that should be accessible via screen readers.</li>
+    <li>Don’t rely solely on color to convey information—add visual cues like underlines or icons.</li>
+  </ul>
+
+  <strong>7. Test accessibility</strong>
+  <ul>
+    <li>Use screen readers and tools like Axe, Lighthouse, or WAVE to test how accessible your site is.</li>
+  </ul>
+
+  <strong>8. Enable keyboard navigation</strong>
+  <ul>
+    <li>All interactive elements should be accessible via the keyboard.</li>
+    <li>Use <code>:focus</code> styles and <code>tabindex</code> where appropriate to manage focus states.</li>
+  </ul>
+
+  <strong>Conclusion:</strong>
+  <p>Accessibility is an ongoing process. By using semantic HTML, structuring content properly, testing frequently, and applying thoughtful CSS, you help make the web inclusive for all users.</p>
+</details>
+
+<details>
+  <summary><strong>47. How can you implement responsive design using CSS?</strong></summary>
+
+  <p>Responsive design ensures that a website looks and works well on devices of various screen sizes. CSS provides several tools and techniques to achieve this:</p>
+
+  <strong>1. Media Queries</strong>
+  <p>Media queries allow you to apply different styles depending on the screen's characteristics, like width, height, or orientation.</p>
+
+  <pre><code>/* Base styles for mobile devices */
+body {
+  font-size: 16px;
+  padding: 10px;
+}
+
+/* Styles for tablets */
+@media (min-width: 768px) {
+  body {
+    font-size: 18px;
+    padding: 20px;
+  }
+}
+
+/* Styles for desktops */
+@media (min-width: 1024px) {
+  body {
+    font-size: 20px;
+    padding: 30px;
+  }
+}
+</code></pre>
+
+  <strong>2. Fluid Grids</strong>
+  <p>Use percentage-based widths instead of fixed pixels so that containers adapt to screen size.</p>
+
+  <pre><code>.container {
+  width: 80%;
+  max-width: 1200px;
+}
+</code></pre>
+
+  <strong>3. Responsive Images</strong>
+  <p>Ensure images scale correctly within their containers.</p>
+
+  <pre><code>img {
+  max-width: 100%;
+  height: auto;
+}
+</code></pre>
+
+  <strong>4. Flexbox and CSS Grid</strong>
+  <p>These layout models allow you to build flexible and adaptive layouts easily.</p>
+
+  <strong>Flexbox:</strong>
+  <pre><code>.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item {
+  flex: 1 1 200px;
+}
+</code></pre>
+
+  <strong>CSS Grid:</strong>
+  <pre><code>.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+}
+</code></pre>
+
+  <strong>5. Scalable Text</strong>
+  <p>Use relative units (like <code>em</code> or <code>rem</code>) for font sizes to make text scale appropriately.</p>
+
+  <pre><code>body {
+  font-size: 1rem;
+}
+
+h1 {
+  font-size: 2rem;
+}
+</code></pre>
+
+  <strong>6. Touchable UI Elements</strong>
+  <p>Ensure that buttons and interactive elements are large enough for users to tap on touchscreens.</p>
+
+  <pre><code>.button {
+  padding: 12px 20px;
+  font-size: 16px;
+}
+</code></pre>
+
+  <strong>Conclusion:</strong>
+  <p>By combining media queries, flexible layouts, responsive images, scalable text, and touch-friendly controls, you can create modern, accessible websites that work seamlessly across all devices.</p>
+</details>
+
+<details>
+  <summary><strong>48. Explain the concept of CSS variables.</strong></summary>
+
+  <p>CSS variables, also known as <strong>custom properties</strong>, allow you to store values in variables and reuse them throughout your CSS. They improve code maintainability, consistency, and flexibility.</p>
+
+  <strong>1. Syntax</strong>
+  <p>CSS variables are defined with a <code>--</code> prefix and are typically declared inside the <code>:root</code> selector to make them globally accessible:</p>
+
+  <pre><code>:root {
+  --main-color: #3498db;
+  --padding: 16px;
+}
+</code></pre>
+
+  <strong>2. Usage</strong>
+  <p>To use a variable, apply the <code>var()</code> function:</p>
+
+  <pre><code>.button {
+  background-color: var(--main-color);
+  padding: var(--padding);
+}
+</code></pre>
+
+  <strong>3. Scope</strong>
+  <p>CSS variables are scoped, meaning you can override them locally within specific selectors:</p>
+
+  <pre><code>.button {
+  --main-color: #e74c3c;
+  background-color: var(--main-color);
+}
+</code></pre>
+
+  <strong>4. Dynamic Updates with JavaScript</strong>
+  <p>You can update CSS variables dynamically via JavaScript, allowing for real-time style changes:</p>
+
+  <pre><code>document.documentElement.style.setProperty('--main-color', '#2ecc71');
+</code></pre>
+
+  <strong>5. Benefits</strong>
+  <ul>
+    <li><strong>Maintainability:</strong> Easily update repeated values from one place.</li>
+    <li><strong>Flexibility:</strong> Override variables for specific contexts (e.g., media queries or components).</li>
+    <li><strong>Less duplication:</strong> Keeps your code DRY and consistent.</li>
+  </ul>
+
+  <strong>6. Example</strong>
+  <pre><code>:root {
+  --font-size: 16px;
+  --line-height: 1.5;
+}
+
+p {
+  font-size: var(--font-size);
+  line-height: var(--line-height);
+}
+
+.large-text {
+  font-size: calc(var(--font-size) * 1.5);
+}
+</code></pre>
+
+  <strong>Conclusion:</strong>
+  <p>CSS variables are a powerful tool for creating scalable and consistent stylesheets. They simplify customization and help manage design tokens across projects.</p>
+</details>
+
+<details>
+  <summary><strong>49. What typically causes the biggest drops in website performance?</strong></summary>
+
+  <strong>1. Large Images and Media Files</strong><br>
+  Uncompressed or incorrectly formatted images (e.g., PNG instead of JPEG) slow down loading. Lack of lazy loading leads to all images being fetched at once.
+
+  <strong>2. Heavy or Complex CSS and JavaScript</strong><br>
+  Unoptimized CSS/JS files, unused code, large libraries, and lack of async/defer attributes block rendering.
+
+  <strong>3. Too Many HTTP Requests</strong><br>
+  Each asset (image, script, style) triggers a request. No caching increases load times due to repeated fetching.
+
+  <strong>4. Unoptimized Fonts</strong><br>
+  Too many font weights or styles increase load size. FOIT (Flash of Invisible Text) delays text rendering.
+
+  <strong>5. Slow Server or No CDN</strong><br>
+  A weak or distant server adds latency. Without a CDN, users far from the host receive slower content delivery.
+
+  <strong>6. Large or Deep DOM</strong><br>
+  Overly complex or deeply nested HTML structures slow down style and script execution.
+
+  <strong>7. No CSS/JS Optimization</strong><br>
+  Lack of minification and file bundling leads to larger payloads and more HTTP requests.
+
+  <strong>8. Rendering Issues</strong><br>
+  Styles or scripts that trigger reflows or repaints during interaction hurt performance.
+
+  <strong>9. Poor Mobile Optimization</strong><br>
+  Lack of responsive design or unnecessary resource loading on mobile slows the site.
+
+  <strong>10. Slow Database or Inefficient Queries</strong><br>
+  Poorly optimized server queries or missing indexes delay dynamic content loading.
+
+  <strong>11. Cross-Browser Compatibility Issues</strong><br>
+  Inconsistent rendering between browsers may lead to extra code and degraded performance.
+
+  <strong>Optimization Tips:</strong>
+  <ul>
+    <li>Compress images (e.g., WebP format).</li>
+    <li>Use lazy loading for media.</li>
+    <li>Minify and bundle CSS/JS files.</li>
+    <li>Enable caching and use a CDN.</li>
+    <li>Simplify DOM structure and layout.</li>
+    <li>Ensure responsive design for mobile devices.</li>
+  </ul>
+
+  <strong>Conclusion:</strong><br>
+  Addressing these issues helps improve website load speed, responsiveness, and user experience.
+</details>
+
+<details>
+  <summary><strong>50. How to make two columns in CSS where one stretches and the other does not?</strong></summary>
+
+  <strong>Using Flexbox:</strong>
+  <pre><code>.container {
+  display: flex;
+}
+
+.fixed-column {
+  width: 200px;
+  background-color: lightgray;
+}
+
+.flex-column {
+  flex-grow: 1;
+  background-color: lightblue;
+}</code></pre>
+
+  <strong>HTML:</strong>
+  <pre><code>&lt;div class="container"&gt;
+  &lt;div class="fixed-column"&gt;Fixed Column&lt;/div&gt;
+  &lt;div class="flex-column"&gt;Flexible Column&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+  <strong>Explanation:</strong>
+  The container becomes a flex container. The first column has a fixed width, while the second uses <code>flex-grow: 1</code> to occupy all available space.
+
+  <strong>Using CSS Grid:</strong>
+  <pre><code>.container {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+}
+
+.fixed-column {
+  background-color: lightgray;
+}
+
+.flex-column {
+  background-color: lightblue;
+}</code></pre>
+
+  <strong>HTML:</strong>
+  <pre><code>&lt;div class="container"&gt;
+  &lt;div class="fixed-column"&gt;Fixed Column&lt;/div&gt;
+  &lt;div class="flex-column"&gt;Flexible Column&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+  <strong>Explanation:</strong>
+  <code>grid-template-columns: 200px 1fr</code> defines two columns: one fixed at 200px, and the second stretches to fill remaining space using fractional units.
+
+  <strong>Summary:</strong>
+  Both Flexbox and Grid work well. Flexbox is great for simple horizontal/vertical layouts. Grid offers more control for complex and two-dimensional designs.
+</details>
+
+<details>
+  <summary><strong>51. What are the advantages and disadvantages of CSS animations compared to JavaScript animations?</strong></summary>
+
+  <strong>Advantages of CSS animations:</strong>
+  <ul>
+    <li><strong>Simplicity and ease of use:</strong> CSS animations are easy to write and do not require JavaScript. They are ideal for simple transitions like color, size, or position changes.</li>
+    <li><strong>Better performance:</strong> CSS animations are usually more performant as they are processed by the browser using hardware acceleration, especially for properties like <code>transform</code> and <code>opacity</code>.</li>
+    <li><strong>Less code and cleaner syntax:</strong> Using <code>@keyframes</code> and <code>transition</code> makes it easy to define animation sequences without complex logic.</li>
+    <li><strong>Lower resource usage:</strong> They consume fewer resources and are less CPU-intensive since they are handled by the browser’s rendering engine.</li>
+  </ul>
+
+  <strong>Disadvantages of CSS animations:</strong>
+  <ul>
+    <li><strong>Limited control:</strong> CSS animations lack the flexibility to handle complex logic or conditional animation flows.</li>
+    <li><strong>Restricted functionality:</strong> Only certain properties can be animated. Advanced effects like scroll-based or event-driven animations require JavaScript.</li>
+    <li><strong>Poor synchronization with events:</strong> It's harder to sync with other actions or execute follow-up logic at the end of an animation.</li>
+    <li><strong>Difficult to manage complex animations:</strong> Multi-stage or conditional animations become hard to implement and maintain using just CSS.</li>
+  </ul>
+
+  <strong>Advantages of JavaScript animations:</strong>
+  <ul>
+    <li><strong>Flexibility and interactivity:</strong> JavaScript supports dynamic, user-driven animations with conditions, loops, and real-time updates.</li>
+    <li><strong>Full control:</strong> Every aspect of an animation (timing, delay, steps) can be managed programmatically. Animations can be paused, reversed, or modified on the fly.</li>
+    <li><strong>Rich ecosystem:</strong> Libraries like GSAP and Anime.js simplify complex animation workflows and offer extensive features.</li>
+  </ul>
+
+  <strong>Disadvantages of JavaScript animations:</strong>
+  <ul>
+    <li><strong>Higher performance cost:</strong> JavaScript animations run on the main thread and may slow down the UI, especially if not optimized.</li>
+    <li><strong>More complex to write:</strong> They often require more code and logic, making them harder to implement and maintain than CSS-based approaches.</li>
+    <li><strong>No hardware acceleration for some properties:</strong> Unlike CSS, certain animated properties might not benefit from GPU acceleration.</li>
+  </ul>
+
+  <strong>Conclusion:</strong><br />
+  CSS animations are best for simple, efficient transitions without interaction logic. JavaScript is preferable for advanced, user-driven, or condition-based animations.
+</details>
+
+<details>
+  <summary><strong>52. How can you override <code>!important</code> or achieve a similar effect without using <code>!important</code>?</strong></summary>
+
+  <strong>Overriding <code>!important</code> is difficult</strong> because it has the highest priority in CSS. However, there are several methods to achieve a similar result:
+
+  <strong>1. Increase selector specificity:</strong><br />
+  Use more specific selectors (e.g., adding a parent or ID) to give your rule higher priority than the one using <code>!important</code>.
+  <pre><code>/* Original style with !important */
+.button {
+  color: red !important;
+}
+
+/* Override with higher specificity */
+.container .button {
+  color: blue;
+}</code></pre>
+
+  <strong>2. Use inline styles:</strong><br />
+  Adding a <code>style</code> attribute directly in HTML gives the rule higher priority than most stylesheet rules.
+  <pre><code>&lt;button style="color: green;"&gt;Click Me&lt;/button&gt;</code></pre>
+
+  <strong>3. Use JavaScript to apply inline styles:</strong><br />
+  JavaScript can dynamically set styles with <code>!important</code>, overriding existing rules.
+  <pre><code>document.getElementById('myButton').style.setProperty('color', 'blue', 'important');</code></pre>
+
+  <strong>4. Place your rule later in the stylesheet:</strong><br />
+  If specificity is the same, rules defined later in the stylesheet can override earlier ones — although this doesn't always beat <code>!important</code>.
+  <pre><code>.button {
+  color: red !important;
+}
+
+/* Later rule */
+.button {
+  color: blue;
+}</code></pre>
+
+  <strong>5. Use JavaScript to add/remove classes:</strong><br />
+  Dynamically modifying the class list of an element can help apply styles conditionally.
+  <pre><code>document.getElementById('myButton').classList.add('override');</code></pre>
+
+  <strong>Conclusion:</strong><br />
+  The most reliable ways to override <code>!important</code> are increasing selector specificity and using inline styles. It's best to use <code>!important</code> sparingly to keep styles maintainable.
+</details>
+
+<details>
+  <summary><strong>53. How can you determine the level of specificity if your new selector is supposed to be more specific?</strong></summary>
+
+  <strong>CSS specificity</strong> is a measurement of how specific a selector is, which determines which rule takes precedence when multiple rules target the same element. Specificity is calculated using four components:
+
+  <ul>
+    <li><strong>a</strong>: Inline styles (always 1 if present)</li>
+    <li><strong>b</strong>: Number of ID selectors</li>
+    <li><strong>c</strong>: Number of class selectors, attribute selectors, and pseudo-classes</li>
+    <li><strong>d</strong>: Number of element selectors and pseudo-elements</li>
+  </ul>
+
+  The higher the value starting from the left, the more specific the selector.
+
+  <strong>Examples:</strong>
+
+  <pre><code>&lt;div style="color: red;"&gt;Hello&lt;/div&gt;
+Specificity: [1, 0, 0, 0]</code></pre>
+
+  <pre><code>#header {
+  color: blue;
+}
+Specificity: [0, 1, 0, 0]</code></pre>
+
+  <pre><code>.button {
+  color: green;
+}
+div:hover {
+  color: green;
+}
+[type="text"] {
+  color: green;
+}
+Specificity: [0, 0, 1, 0] (each)</code></pre>
+
+  <pre><code>div {
+  color: black;
+}
+Specificity: [0, 0, 0, 1]</code></pre>
+
+  <strong>Combined selectors example:</strong>
+  <pre><code>div #header .button {
+  color: purple;
+}
+/* Specificity: [0, 1, 1, 1] */</code></pre>
+
+  <strong>Rules of specificity:</strong>
+  <ul>
+    <li>Inline styles have the highest specificity.</li>
+    <li>ID selectors are more specific than class selectors.</li>
+    <li>Class, attribute, and pseudo-class selectors are more specific than element or pseudo-element selectors.</li>
+    <li>If specificity is equal, the rule that appears later in the CSS wins.</li>
+  </ul>
+
+  <strong>Conflict example:</strong>
+  <pre><code>p {
+  color: red; /* Specificity: [0, 0, 0, 1] */
+}
+
+.someClass {
+  color: blue; /* Specificity: [0, 0, 1, 0] */
+}
+
+&lt;p class="someClass"&gt;Hello World!&lt;/p&gt;
+<!-- Result: blue text --></code></pre>
+
+  <strong>Conclusion:</strong><br />
+  The more IDs, classes, and tags a selector includes, the more specific it becomes. Understanding and calculating specificity helps resolve style conflicts effectively.
+</details>
+
+<details>
+  <summary><strong>54. What is the mobile-first approach, and what are its advantages and disadvantages?</strong></summary>
+
+  <strong>Mobile-first</strong> is a web development approach where design and development start with optimization for mobile devices (small screens), then progressively enhance the experience for larger screens like tablets and desktops. It uses progressive enhancement instead of scaling down from desktop (desktop-first).
+
+  <strong>Advantages of mobile-first:</strong>
+  <ul>
+    <li><strong>Better user experience on mobile:</strong> UI and functionality are tailored for mobile users, considering limitations like screen size and network speed.</li>
+    <li><strong>Faster load times:</strong> Developers are encouraged to optimize performance by minimizing resources like images, fonts, and scripts.</li>
+    <li><strong>Focus on core functionality:</strong> The limited screen space pushes developers to prioritize essential features and avoid clutter.</li>
+    <li><strong>Simplified responsive design:</strong> It’s easier to scale up using media queries once a solid mobile base is created.</li>
+    <li><strong>SEO benefits:</strong> Google prioritizes mobile-friendly websites in its indexing and ranking.</li>
+  </ul>
+
+  <strong>Disadvantages of mobile-first:</strong>
+  <ul>
+    <li><strong>Time-consuming for complex apps:</strong> Developing for mobile first and then adapting to desktop can require more effort for large-scale projects.</li>
+    <li><strong>Challenging for feature-rich designs:</strong> Heavy components (like graphics or interactive elements) can be hard to implement effectively on mobile.</li>
+    <li><strong>Requires detailed planning:</strong> Proper structure and planning are necessary to ensure a smooth scale-up to desktop, which demands strong architectural understanding.</li>
+  </ul>
+
+  <strong>Conclusion:</strong><br />
+  The mobile-first approach improves optimization for mobile users and boosts site performance, which is critical with increasing mobile traffic. However, for complex or feature-heavy projects, it may increase development complexity and time.
+</details>
+
+<details>
+  <summary><strong>54. Explain how specificity is calculated in CSS selectors.</strong></summary>
+
+  <strong>Specificity</strong> in CSS is a mechanism that browsers use to determine which style rule to apply when multiple selectors target the same element. It is based on the types of selectors used, and the more specific a selector is, the higher its priority.
+
+  <strong>How is specificity calculated?</strong><br />
+  Specificity is usually represented as a four-part value: <strong>(a, b, c, d)</strong>, where:
+  <ul>
+    <li><strong>a</strong> – Inline styles (e.g., <code>style="..."</code>)</li>
+    <li><strong>b</strong> – Number of ID selectors</li>
+    <li><strong>c</strong> – Number of class selectors, attribute selectors, and pseudo-classes</li>
+    <li><strong>d</strong> – Number of element names and pseudo-elements</li>
+  </ul>
+
+  <strong>Examples:</strong>
+  <ul>
+    <li><code>p</code> → (0, 0, 0, 1)</li>
+    <li><code>.menu</code> → (0, 0, 1, 0)</li>
+    <li><code>#header</code> → (0, 1, 0, 0)</li>
+    <li><code>style="..."</code> → (1, 0, 0, 0)</li>
+    <li><code>div.menu</code> → (0, 0, 1, 1)</li>
+    <li><code>#header .menu</code> → (0, 1, 1, 0)</li>
+    <li><code>.menu .item</code> → (0, 0, 2, 0)</li>
+  </ul>
+
+  <strong>How to calculate total specificity?</strong><br />
+  Each part is summed across the selector. For example:<br />
+  <code>#header .menu a</code> has:
+  <ul>
+    <li>#header → (0, 1, 0, 0)</li>
+    <li>.menu → (0, 0, 1, 0)</li>
+    <li>a → (0, 0, 0, 1)</li>
+  </ul>
+  Final specificity: <strong>(0, 1, 1, 1)</strong>
+
+  <strong>Priority rules:</strong><br />
+  Specificity is compared from left to right: <code>a → b → c → d</code>.
+  <ul>
+    <li><code>#header .menu</code> → (0, 1, 1, 0)</li>
+    <li><code>.menu a</code> → (0, 0, 1, 1)</li>
+    <li>First selector wins because of higher specificity.</li>
+  </ul>
+
+  <strong>Important notes:</strong>
+  <ul>
+    <li><code>!important</code> overrides specificity unless both rules use it — then specificity is compared.</li>
+    <li>Inherited properties do not affect specificity — direct rules take priority.</li>
+  </ul>
+
+  <strong>Conclusion:</strong><br />
+  Understanding CSS specificity helps prevent style conflicts. Build selectors carefully and avoid overusing <code>!important</code> to maintain clean and predictable styles.
+</details>
+
+<details>
+  <summary><strong>55. What are CSS pre-/post-processors used for?</strong></summary>
+
+  <strong>CSS pre- and post-processors</strong> are tools that extend standard CSS functionality, making it easier to write structured, scalable, and maintainable style code.
+
+  <strong>CSS Preprocessors:</strong><br />
+  Preprocessors use their own syntax, which compiles to regular CSS. They introduce features like variables, nested selectors, mixins, and functions.
+
+  <strong>Popular preprocessors:</strong>
+  <ul>
+    <li><strong>Sass/SCSS</strong> — widely used, supports both Sass and SCSS syntax.</li>
+    <li><strong>LESS</strong> — similar to SCSS with its own syntax quirks.</li>
+    <li><strong>Stylus</strong> — allows very flexible syntax, including omission of brackets and semicolons.</li>
+  </ul>
+
+  <strong>Main features:</strong>
+  <ul>
+    <li><strong>Variables:</strong> Reuse colors, sizes, or fonts.<br />
+      <code>$primary-color: #3498db;</code><br />
+      <code>body { background-color: $primary-color; }</code>
+    </li>
+    <li><strong>Nested selectors:</strong> Better structure and DRY code.<br />
+      <code>.menu { a { color: #333; } }</code>
+    </li>
+    <li><strong>Mixins:</strong> Reusable blocks of styles with arguments.<br />
+      <code>@mixin border-radius($radius) { border-radius: $radius; }</code><br />
+      <code>.box { @include border-radius(10px); }</code>
+    </li>
+    <li><strong>Functions:</strong> Do calculations, color manipulation.<br />
+      <code>$base-color: #3498db;</code><br />
+      <code>.box { color: lighten($base-color, 20%); }</code>
+    </li>
+    <li><strong>Inheritance:</strong> Reuse styles via <code>@extend</code>.<br />
+      <code>.primary-button { @extend .button; }</code>
+    </li>
+  </ul>
+
+  <strong>CSS Postprocessors:</strong><br />
+  Postprocessors modify already written CSS, mainly for compatibility and optimization.
+
+  <strong>Most used postprocessor:</strong>
+  <ul>
+    <li><strong>Autoprefixer</strong> — adds vendor prefixes based on browser support data.</li>
+  </ul>
+
+  <strong>Example:</strong><br />
+  Input:
+  <pre><code>.box {
+  display: flex;
+}</code></pre>
+  Output with Autoprefixer:
+  <pre><code>.box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}</code></pre>
+
+  <strong>Postprocessor features:</strong>
+  <ul>
+    <li>Automatic vendor prefixing for cross-browser support</li>
+    <li>CSS minification and deduplication</li>
+    <li>Converting modern CSS (CSS4) to older CSS (CSS3) for compatibility</li>
+  </ul>
+
+  <strong>Benefits of preprocessors and postprocessors:</strong>
+  <ul>
+    <li>Better code structure (via variables, mixins, nesting)</li>
+    <li>Faster development with reusable logic</li>
+    <li>Improved browser support</li>
+    <li>More maintainable and scalable CSS</li>
+  </ul>
+
+  <strong>Drawbacks:</strong>
+  <ul>
+    <li>Require a compilation step</li>
+    <li>Dependency on third-party tools</li>
+    <li>Extra complexity for beginners</li>
+  </ul>
+
+  <strong>Conclusion:</strong><br />
+  CSS preprocessors help write flexible and DRY code, while postprocessors enhance compatibility and reduce manual overhead. Both tools are essential in modern frontend workflows.
+</details>
+
+<details>
+  <summary><strong>56. What are the types of inputs in forms? How to submit a form to the server without JavaScript?</strong></summary>
+
+  <strong>Types of inputs in HTML forms:</strong>
+  <ul>
+    <li><code>&lt;input type="text"&gt;</code> — text field for entering text.</li>
+    <li><code>&lt;input type="password"&gt;</code> — password field (hidden text).</li>
+    <li><code>&lt;input type="email"&gt;</code> — email input (validates email format).</li>
+    <li><code>&lt;input type="number"&gt;</code> — numeric input field.</li>
+    <li><code>&lt;input type="tel"&gt;</code> — phone number input.</li>
+    <li><code>&lt;input type="url"&gt;</code> — URL input field.</li>
+    <li><code>&lt;input type="date"&gt;</code> — date picker.</li>
+    <li><code>&lt;input type="radio"&gt;</code> — radio buttons (select one option).</li>
+    <li><code>&lt;input type="checkbox"&gt;</code> — checkboxes (select multiple options).</li>
+    <li><code>&lt;input type="file"&gt;</code> — file upload input.</li>
+    <li><code>&lt;input type="submit"&gt;</code> — button to submit the form.</li>
+    <li><code>&lt;input type="reset"&gt;</code> — button to reset form fields to initial values.</li>
+    <li><code>&lt;input type="hidden"&gt;</code> — hidden input, not visible but sent to server.</li>
+    <li><code>&lt;input type="color"&gt;</code> — color picker.</li>
+    <li><code>&lt;input type="range"&gt;</code> — slider for selecting value in a range.</li>
+    <li><code>&lt;input type="search"&gt;</code> — search query input.</li>
+    <li><code>&lt;textarea&gt;</code> — multiline text input (not an input element but used for text).</li>
+    <li><code>&lt;select&gt;</code> — dropdown list for single or multiple selection.</li>
+  </ul>
+
+  <strong>Submitting a form to the server without JavaScript:</strong><br />
+  Use the standard HTML <code>&lt;form&gt;</code> element with <code>action</code> and <code>method</code> attributes.<br />
+
+  <strong>Example:</strong>
+  <pre><code>&lt;form action="/submit-url" method="POST"&gt;
+  &lt;label for="name"&gt;Name:&lt;/label&gt;
+  &lt;input type="text" id="name" name="name" required&gt;
+
+  &lt;label for="email"&gt;Email:&lt;/label&gt;
+  &lt;input type="email" id="email" name="email" required&gt;
+
+  &lt;input type="submit" value="Submit"&gt;
+&lt;/form&gt;
+  </code></pre>
+
+  <strong>Explanation:</strong>
+  <ul>
+    <li><code>action="/submit-url"</code> — URL where form data is sent (usually a server endpoint).</li>
+    <li><code>method="POST"</code> — HTTP method for data submission:
+      <ul>
+        <li><code>POST</code> sends data in the request body (used to create/update data).</li>
+        <li><code>GET</code> sends data via URL query string (used for retrieving data).</li>
+      </ul>
+    </li>
+    <li><code>&lt;input type="submit"&gt;</code> — button to send form data to the server.</li>
+  </ul>
+
+  <strong>How it works:</strong><br />
+  When the user clicks the submit button, form data is sent to the URL specified in <code>action</code> using the specified <code>method</code>. The server then processes the data (e.g., stores it in a database).
+
+  <strong>Advantages:</strong>
+  <ul>
+    <li>Simple and effective way to send data without dependencies or scripting.</li>
+  </ul>
+
+  <strong>Disadvantages:</strong>
+  <ul>
+    <li>Less control over form submission (no dynamic validation or data manipulation before sending).</li>
+  </ul>
+</details>
 
